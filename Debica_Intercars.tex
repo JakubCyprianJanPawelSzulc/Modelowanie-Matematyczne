@@ -1,0 +1,485 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\usepackage[utf8]{inputenc}
+%\usepackage[cp1250]{inputenc}
+\usepackage[polish]{babel}
+\usepackage[T1]{fontenc}
+
+%----------------------
+\def\\{\hfill\break}
+
+
+%----------------------
+\title{Projekt Egzaminacyjny}
+\author{Jakub Szulc, Jakub Woźniak}
+\date{Listopad 2021 -- Styczeń 2022}
+
+\begin{document}
+
+\maketitle
+\pagebreak
+\tableofcontents
+\pagebreak
+\section{Wstęp}
+Analiza danych dwóch spółek notawanych na GPW - Intercars i Debica. Dane analizowane to dane zamknięcia od 01.01.2020 do 31.12.2021.
+
+\section{Spółka 1 - Dębica S.A.}
+Firma Oponiarska Dębica – przedsiębiorstwo przemysłu chemicznego z siedzibą w Dębicy, wytwarzające opony i prefabrykaty do produkcji opon. Od 1995 spółka wchodzi w skład koncernu Goodyear, który ma w posiadaniu 87,25\% kapitału akcyjnego.
+\subsection{Wykres i histogram kursów}
+\centerline{\includegraphics[width=10cm, height=5cm]{dbc/01_01.png}}
+\centerline{Wykres kursów zamknięcia}
+\centerline{\includegraphics[width=10cm, height=5cm]{dbc/01_02.png}}
+\centerline{Histogram kursów zamknięcia}
+
+\subsection{Statystyki opisowe spółki}
+\begin{center}
+\begin{tabular}{ |c|c|c|c|c| } 
+ \hline
+    & x & Odch. st & Skośność & Kurtoza \\ 
+\hline
+ Akcja & 71.27414  & 4.516164 & -0.970347 & 2.889294 \\
+\hline
+\end{tabular}
+\end{center}
+\\
+Skośność ujemna, a więc rozkład ma długi ogon z lewej strony \\ \\
+Kurtoza dodatnia oznacza, że w danych jest więcej skrajnych wartości odstających niż w rozkładzie normalnym. 
+
+\subsection{Estymacja parametrów trzech rozkładów: Normalnego, Log-normalnego i Wykładniczego}
+\centerline{Rozkład normalny}
+\begin{center}
+\begin{tabular}{ |c|c|c| } 
+ \hline
+    & estimate & std. error \\ 
+\hline
+ mean & 68.249679  & 0.3428820 \\
+\hline
+ sd & 3.445921 & 0.2424541 \\
+\hline
+\end{tabular}
+\end{center}
+\centerline{\includegraphics[width=10cm]{dbc/03_01.png}}
+\newpage
+\centerline{Rozkład wykładniczy}
+\begin{center}
+\begin{tabular}{ |c|c|c| } 
+ \hline
+    & estimate & std. error \\ 
+\hline
+ rate & 0.01465208  & 0.001451108 \\
+\hline
+\end{tabular}
+\end{center}
+\centerline{\includegraphics[width=10cm]{dbc/03_02.png}}
+\\
+\centerline{Rozkład log-normalny}
+\begin{center}
+\begin{tabular}{ |c|c|c| } 
+ \hline
+    & estimate & std. error \\ 
+\hline
+ meanlog & 4.22189835  & 0.005023164 \\
+\hline
+ sdlog & 0.05048218 & 0.003545644\\
+ \hline
+\end{tabular}
+\end{center}
+\centerline{\includegraphics[width=10cm]{dbc/03_03.png}}
+\subsection{Wykresy diagnostyczne oraz analiza wartości statystyk KS, CM i AD oraz kryteria AIC oraz BIC}
+\centerline{\includegraphics[width=10cm]{dbc/04_01.png}}
+\\
+\centerline{\includegraphics[width=10cm]{dbc/04_02.png}}
+\centerline{Denscomp}
+
+\centerline{\includegraphics[width=10cm]{dbc/04_03.png}}
+\centerline{Qqcomp}
+
+\centerline{\includegraphics[width=10cm]{dbc/04_04.png}}
+\centerline{Cdfcomp}
+
+\centerline{\includegraphics[width=10cm]{dbc/04_05.png}}
+\centerline{Ppcomp}
+
+Analizując wartości statystyk KS, CM, AD i kryteria informacyjne AIC oraz  BIC, jak również wykresy, możemy dojść do wniosku, że najlepszym wyborem będzie rozkład log-normalny, gdyż wartości w tych statystykach i kryteriach są najmniejsze dla tego właśnie rozkładu i najbardziej pokrywa się on na wykresach. 
+
+\subsection{Hipoteza o równości rozkładów}
+\centerline{\includegraphics[width=2cm]{dbc/05_01.png}}\\
+\centerline{\includegraphics[width=10cm]{dbc/05_02.png}}\\
+\centerline{\includegraphics[width=10cm]{dbc/05_03.png}}\\
+\centerline{\includegraphics[width=4cm]{dbc/05_05.png}}\\\
+Na podstawie realizacji x1, x2, . . . , xn z rozkładu o nieznanej dystrybuancie F, testujemy hipotezę zerową o równości dystrybuant H0 : F = F0, przeciwko hipotezie alternatywnej  H1 : F =/= F0, gdzie F0 jest ustaloną dystrybuantą. 
+
+Wartość p-value jest mniejsza od przyjętego poziomu istotności, zatem hipotezę o równości dystrybuant (F=F0, gdzie F poszukiwany rozkład) odrzucamy. 
+
+
+\newpage
+
+\maketitle
+\section{Spółka 2 - Inter Cars S.A.}
+Jest to przedsiębiorstwo branży motoryzacyjnej, zajmujące się sprzedażą części samochodowych i motocyklowych.
+\subsection{Wykres i histogram kursów}
+\centerline{\includegraphics[width=10cm, height=5.5cm]{car/1.png}}
+\centerline{Wykres kursów zamknięcia}
+\centerline{\includegraphics[width=10cm, height=5.5cm]{car/2.png}}
+\centerline{Histogram kursów zamknięcia}
+
+\subsection{Statystyki opisowe spółki}
+\begin{center}
+\begin{tabular}{ |c|c|c|c|c| } 
+ \hline
+    & x & Odch. st & Skośność & Kurtoza \\ 
+\hline
+ Akcja & 292.70573956   & 95.6406734  & 0.39805218  & 1.77179198  \\
+\hline
+\end{tabular}
+\end{center}
+\\
+Skośność dodatnia, czyli ma długi ogon z prawej strony.  \\ \\
+Kurtoza dodatnia oznacza, że w danych jest więcej skrajnych wartości odstających niż w rozkładzie normalnym. 
+
+\newpage
+\subsection{Estymacja parametrów trzech rozkładów: Normalnego, Log-normalnego i Wykładniczego}
+
+\centerline{Rozkład normalny}
+\begin{center}
+\begin{tabular}{ |c|c|c| } 
+ \hline
+    & estimate & std. error \\ 
+\hline
+ mean & 292.70574  & 4.260164 \\
+\hline
+ sd & 95.54556 & 3.012391 \\
+\hline
+\end{tabular}
+\end{center}
+\\
+\centerline{\includegraphics[width=10cm]{car/3.png}}
+\\
+\centerline{Rozkład wykładniczy}
+\begin{center}
+\begin{tabular}{ |c|c|c| } 
+ \hline
+    & estimate & std. error \\ 
+\hline
+ rate & 0.0034164  & 0.0001376624 \\
+\hline
+\end{tabular}
+\end{center}
+\centerline{\includegraphics[width=10cm]{car/4.png}}
+
+\\
+\centerline{Rozkład log-normalny}
+\begin{center}
+\begin{tabular}{ |c|c|c| } 
+ \hline
+    & estimate & std. error \\ 
+\hline
+ meanlog & 5.6257000  & 0.01463088 \\
+\hline
+ sdlog & 0.3281363 & 0.01034516 \\
+\hline
+\end{tabular}
+\end{center}
+\centerline{\includegraphics[width=10cm]{car/5.png}}
+
+\subsection{Wykresy diagnostyczne oraz analiza wartości statystyk KS, CM i AD oraz kryteria AIC oraz BIC}
+\centerline{\includegraphics[width=10cm]{car/6.png}}
+\\
+\centerline{\includegraphics[width=10cm]{car/7.png}}
+\centerline{Denscomp}
+
+\centerline{\includegraphics[width=10cm]{car/8.png}}
+\centerline{Qqcomp}
+
+\centerline{\includegraphics[width=10cm]{car/9.png}}
+\centerline{Cdfcomp}
+
+\centerline{\includegraphics[width=10cm]{car/10.png}}
+\centerline{Ppcomp}
+
+Analizując wartości statystyk KS, CM, AD i kryteria informacyjne AIC oraz  BIC, jak również wykresy, możemy dojść do wniosku, że najlepszym wyborem będzie rozkład log-normalny, gdyż wartości w tych statystykach i kryteriach są najmniejsze dla tego właśnie rozkładu i najbardziej pokrywa się on na wykresach. 
+
+\subsection{Hipoteza o równości rozkładów}
+\centerline{\includegraphics[width=2cm]{car/11.png}}\\
+\centerline{\includegraphics[width=10cm]{car/12.png}}\\
+\centerline{\includegraphics[width=4cm]{car/13.png}}\\
+\centerline{\includegraphics[width=10cm]{car/14.png}}\\\
+Na podstawie realizacji x1, x2, . . . , xn z rozkładu o nieznanej dystrybuancie F, testujemy hipotezę zerową o równości dystrybuant H0 : F = F0, przeciwko hipotezie alternatywnej  H1 : F =/= F0, gdzie F0 jest ustaloną dystrybuantą. 
+
+Wartość p-value jest mniejsza od przyjętego poziomu istotności, zatem hipotezę o równości dystrybuant (F=F0, gdzie F poszukiwany rozkład) odrzucamy. 
+\newpage
+\section{Analiza łącznego rozkładu log-zwrotów}
+Jeżeli $S_{0}$, $S_{1}$, . . . , $S_{n}$ cenami zamknięcia z kolejnych dni, to dzienne log-zwroty definiujemy jako
+$$r_{1} =\ln\frac{S_{1}}{S_{0}},\:r_{2} =\ln\frac{S_{2}}{S_{1}},\:r_{n} =\ln\frac{S_{n}}{S_{n-1}}$$
+\subsection{Wykres rozrzutu z histogramami rozkładów brzegowych}
+\begin{center}
+
+
+
+\includegraphics[scale=0.7]{wykresRozrzutu.png}
+Wykres rozrutu z analizowanych danych
+\end{center}
+\large
+Analizując wykres i histogram rozrzutu, zauważamy, że większość danych skupia się wokół wartości 0.0 dla obu spółek. Dodatkowo, widać znaczne rozbieżności w danych, które są zależne od obu firm.
+
+
+\pagebreak
+\subsection{Wyznaczanie wektora średnich $\hat{\mu}$.}
+\Large
+$$\mu_{Intercars} =  1.66*10{-3}$$
+$$\mu_{Debica} = -3.305101*10{-5}$$
+
+\subsection{Wyznaczanie kowariancji.}
+\Large
+$$cov(X) = 0.0008403938$$
+$$cov(Y) = 0.0001667264$$
+$$cov(X,Y) = 0.0001193947
+
+\subsection{Wyznaczanie współczynnika korelacji.}
+\Large
+$$r = 0.3189638$$
+\small
+Współczynnik korelacji jest dodatni, oznacza to, że wzrost log-zwrotu jednej spółki jest skorelowany z wzrostem log-zwrotu drugiej spółki. Im większy jest log-zwrot jednej z nich, tym większy możemy oczekiwać u drugiej.
+
+\subsection{Wyznaczanie macierzy kowariancji $\hat{\Sigma}$.}
+
+\begin{table}[h]
+\begin{center}
+
+\begin{tabular}{| c | c | c |} 
+ 
+ \hline
+ & Intercars & Debica \\
+ \hline
+ Intercars & $0.0008403938 & 0.0001193947$\\
+ \hline
+ Debica & $0.0001193947 & 0.0001667264$\\
+ \hline
+\end{tabular}\\
+
+\caption{Macierz kowariancji}
+\end{center}
+
+\end{table}
+\subsection{Wyznaczanie macierzy korelacji.}
+
+\begin{table}[h]
+\begin{center}
+
+\begin{tabular}{| c | c | c |} 
+ 
+ \hline
+ & Intercars & Debica \\
+ \hline
+ Intercars & 1 & 0.3189638 \\
+ \hline
+ Debica & 0.3189638 & 1 \\
+ \hline
+\end{tabular}\\
+
+\caption{Macierz korelacji}
+\end{center}
+
+\end{table}
+
+\subsection{Wykres gęstości oraz wzór}
+\includegraphics[]{wykresGestosci.png}
+\large
+$$f(x,y)=\frac{1}{2\pi\sigma_{1}\sigma_{2}\sqrt{1-\rho^2}}exp\Bigl(-\frac{1}{2(1-\rho^2)}\Bigr[\frac{(x-\mu_{1})^2}{\sigma^2}-2\rho\frac{(x-\mu_{1})(y-\mu_{2})}{\sigma_{1}\sigma_{2}}+\frac{(y-\mu_{2})^2}{\sigma_{2}^2}\Bigr]\Bigl)$$
+\\
+
+\large
+\setlength\parindent{0pt}
+x - wektor log-zwrotów spółki Intercars \\
+y - wektor log-zwrotów spółki Dębica \\
+$\mu_{1}$ - średnia log-zwrotów spółki Intercars \\
+$\mu_{2}$ - średnia log-zwrotów spółki Dębica \\
+$\sigma_{1}$ - ochylenie standardowe log-zwrotów spółki Intercars \\ 
+$\sigma_{2}$ - ochylenie standardowe log-zwrotów spółki Dębica \\
+$\rho$ - współczynnik korelacji
+\pagebreak
+\begin{center}
+\large 
+Wzór dla wyestymowanych parametrów
+$$f(x,y) = 448.6162exp(-0.5566304*(((y--3.305101e-05)^2/0.0001667264)+
+
+((x-0.001661038)^2/0.0008403938)-(0.6379277*((x-0.001661038)*
+
+(y-3.305101e-05)/0.0003743205)))
+
+gdzie x i y to dane spółek
+\end{center}
+
+\begin{center}
+Wzór ogólny gęstości rozkładu normalnego
+\includegraphics[scale=0.6]{wzor.png}
+\end{center}
+
+\begin{center}\
+Wzór dla spółki Intercars
+$$f(x) = 86.46662exp((-(x-0.001661038)^2/0.001680788)
+\end{center}
+
+\begin{center}\
+Wzór dla spółki Debica
+$$f(x) = 194.1278exp((-x--3.305101e-05)^2/0.0003334528)
+\end{center|
+
+
+
+\section{Analiza dopasowania rozkładu N($\hat{\mu}$, $\hat{\Sigma}$) do danych}
+
+\subsection{Próba liczności danych rozkładu N($\hat{\mu}$, $\hat{\Sigma}$), porównanie wykresów rozrzutu otrzymanych na podstawie danych oraz wygenerowaną próbę}
+
+\begin{center}
+\includegraphics[scale = 0.4]{wykresyRozrzutuProba.png}
+Wykresy rozrzutów. Po lewej na podstawie danych spółek, po prawej na podstawie wygenerowanej próby
+\end{center}
+\subsection{Porównanie wykresów rozrzutu}
+Patrząc na wykresy możemy zauważyć że otrzymane na podstawie danych oraz w oparciu o wygenerowaną
+próbę są do siebie stosunkowo podobne.
+Na wykresie rozrzutu dużo danych znajduje się wokół średniej. Na wykresie na podstawie wygenerowanej próby widzimy dużo skrajnych wartości zależnych od spółki Intercars. Na podstawie próby, większość skrajnych wartości jest zależne od obu spółek
+
+\subsection{Testowanie hipotezy, że kwadraty odległości Mahalanobisa wektora cen od średniej mają rozkład X^2(2)}
+
+\includegraphics[scale = 0.7]{histogram_mahalanobis.png}
+
+\centerline{Histogram odległości Mahalanobisa}
+
+\includegraphics[scale = 1]{03_02.png}
+
+\centerline{Wykres QQ-plot odległości Mahalanobisa}
+
+\\
+W celu sprawdzenia czy rozkład dwuwymiarowy normalny jest odpowiedni do opisania log-zwrotów spółek, porównanaliśmy kwantyle empiryczne kwadratu odległości Mahalanobisa od średniej obserwacji z kwantylami teoretycznymi rozkładu chi kwadrat o dwóch stopniach swobody. Porównanie przedstawiono na wykresie kwantyl-kwantyl. Z analizy wykresu można zauważyć, że punkty utworzone z rzeczywistych danych nie układają się wzdłuż prostej, a punkty generowane na podstawie próby układają się, co sugeruje, że rozkład dwuwymiarowy normalny nie jest odpowiedni dla opisania log-zwrotów spółek. Aby potwierdzić tą hipotezę, zostanie użyty test zgodności na podstawie testu Kołmogorowa-Smirnova.
+\subsection{Test zgodności Kołmogorowa-Smirnowa}
+\includegraphics[scale = 0.7]{03_03.png}
+
+Wartość p-value jest niższa niż przyjęty poziom istotności wynoszący 5\%, stąd odrzucamy hipotezę o tym że kwadrat odległości Mahalanobisa wektora cen od średniej mają rozkład $X^2(2)$
+
+\end{center}
+\section{Regresja liniowa dla log-zwrotów}
+\subsection{Przedziały ufności dla wartości oczekiwanej}
+
+Analiza kwadratów odległości Mahalanobisa wykazuje, że rozkład log-zwrotów nie jest normalny, co skłania nas do wyboru Modelu 2. W naszej próbie mamy $(n\geqslant100)$ elementów, a wartości $\mu$ i $\sigma $ nie są nam znane
+
+\\Definicja przedziału ufności:
+\\Przedziałem ufności (CI – Confidence Interval) o poziomie ufności
+1−α, dla parametru θ, nazywamy taki przedział o końcach losowych ($\theta_{1}$, $\theta_{2}$), że
+\begin{center}
+    $ P(\theta < \theta_{1}) = \frac{\alpha}{2}$ i $P(\theta > \theta_{2}) = \frac{\alpha}{2}$
+\end{center}
+gdzie 
+\begin{center}
+    $ \theta_{1} = \theta_{1}(X_{1}, ..., X_{n})$, $\theta_{2} = \theta_{2}(X_{1}, ..., X_{n})$
+\end{center}
+Z definicji wynika, że: 
+$$P(\theta_{1}\leqslant\theta\leqslant\theta_{2}) = 1 - \alpha$$
+
+\\Zatem, wzór na przedział ufności wygląda następująco:
+$$\left[\overline{X}_{n} - u(1-\alpha/2)*\frac{S_{n}}{\sqrt{n}}, \overline{X}_{n} + u(1-\alpha/2)*\frac{S_{n}}{\sqrt{n}}\right]$$
+gdzie,\\
+\\
+$\overline{X_n}$ - wartość oczekiwana log-zwrotów danej spółki\\
+u(p) -  kwantyl rzędu p rozkładu N(0, 1))\\
+$\alpha$ - poziom ufności = (0.05)\\
+$S_n$ -  odchylenie standardowe log zwrotów danej spółki\\
+$\sqrt{n}$ -  pierwiastek z liczności log-zwrotów danej spółki\\
+
+
+
+\pagebreak
+Wyznaczone przedziały dla spółek:
+\\
+\\Przedział ufności danych spółki Intercars: 
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Dolna granica} & \textbf{Górna granica} & \textbf{Długość przedziału}
+ \\ \hline
+ -0.00087                & 0.00419                 & 0.00507    
+\\ \hline
+\end{tabular}
+\end{table}
+
+\\
+\\Przedział ufności danych spółki Debica:
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Dolna granica} & \textbf{Górna granica} & \textbf{Długość przedziału}
+ \\ \hline
+ -0.00116                & 0.00109                 & 0.00225    
+\\ \hline
+\end{tabular}
+\end{table}
+\\
+
+\pagebreak
+\section{Regresja liniowa}
+\includegraphics[scale=0.9]{04_01.png}
+\\Wzór na prostą regresji jest następujący: 
+$$R_{Debica} = b_{0} + b_{1} * R_{Intercars}$$ 
+\begin{center}
+Dla naszych danych wzór wygląda tak:
+$$R_{Debica} =  -0.0002690346 + 0.1420699 * R_{Intercars} $$
+\end{center}
+\paragraph{Współczynnik $b_{0}$ możemy uznać za mało znaczący, ponieważ jest bliski zera, z czego wynika że przesunięcie na osi OY jest znikome}
+
+\paragraph{Współczynnik $b_{1}$ jest dodatni, więc oznacza to że prosta będzie skierowana do góry}
+\subsection{Analiza reszt}
+
+
+
+\includegraphics[]{04_03.png}
+\includegraphics[]{04_02.png}
+\pagebreak
+$$$$Wzór na bład standardowy reszt:\\
+$$RSE = \hat{\sigma} = \sqrt{\frac{1}{n-2}\sum_{i=1}^{n}\varepsilon^2}\notag$$
+\\W naszym wypadku wynosi: $0.01225004$
+$$$$
+Aby ocenić jakość dopasowania modelu regresji, należy sprawdzić, czy błędy są zmiennymi losowymi niezależnymi, których rozkład ma postać N(0, $\sigma^2$). W tym celu użyliśmy testów Kolmogorowa-Smirnova oraz Shapiro-Wilka\\\\
+\includegraphics[scale=0.6]{03_04.png}
+\\
+\includegraphics[scale=0.6]{03_05.png}
+\\
+\\W obu testach p-value nie jest na poziomie 5\%, a więc hipoteze o normalności rozkładu reszt odrzucamy. Pomimo wyników testów, w celu dalszej analizy, założymy że jest przeciwnie.
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    Min     &Kwantyl 1 &Mediana &Kwantyl 3 &Max  \\
+    \hline
+    -0.085249     &-0.005717  &0.000269 &0.005738 &0.052147 \\
+    \hline
+    \end{tabular}
+\end{table}
+\subsection{Analiza istotności współczynników}
+Aby sprawdzić, czy wyliczone współczynniki w modelu regresji są istotne, zakłada się dwie hipotezy - hipotezę zerową, że dany współczynnik jest równy zero i nie ma wpływu na model, oraz hipotezę alternatywną, że współczynnik jest różny od zera i ma wpływ na model.
+\begin{center}
+\includegraphics{abc.PNG}\\
+\end{center}
+Dla $\beta_0$ wartość p-value wynosi więcej niż założone 5\%, a więc nie możemy odrzucić hipotezy o tym że współczynnik jest niestotny, a więc przyjmujemy że musi być różny od zera. 
+Dla $\beta_1$ wartość p-value wynosi mniej niż 5\%, a więc hipoteze możemy odrzucić. Aczkolwiek współczynnik nie może być zerem, ponieważ decyduje on o kierunku prostej regresji i w tym przypadku prosta byłaby pozioma, co nie jest prawdą jak możemy zaobserwować.\\
+
+Współczynnik determinacji opisuje dokładność opisywania danych przez model. Im wyższy, tym lepiej opisuje on dane. \\W naszym wypadku wynosi: 0.1017379, co oznacza że słabo opisuje zmienność danych, bo jest bliski zera.
+
+\subsection{Predykcja log-zwrotow spolki S2}
+Aby wyestymować wartości na podstawie danych, wykonujemy predykcje modelu spółki Debica, gdy średnia wartość z danych spółki Intercars wynosi 0.0016. Wyestymowany przedział ufności wygląda następująco: \\\\
+Mamy 95\% pewność, że gdy log-zwroty będą miały średnią wartość z próby, to log-zwroty będą się zawierały w tym przedziale.\\
+\includegraphics[scale=0.6]{predict.png}
+
+
+\section{Podsumowanie}
+Przeprowadziliśmy analizę dwóch spółek, Dębica S.A. i Inter Cars S.A., korzystając z ich kursów. Dla każdej z spółek wyznaczyliśmy wykres i histogram kursów, a także wyznaczyliśmy statystyki opisowe. Następnie dokonaliśmy estymacji parametrów trzech rozkładów: normalnego, log-normalnego i wykładniczego, przy użyciu wykresów diagnostycznych i analizy wartości statystyk. Ostatecznie przeprowadziliśmy hipotezę o równości rozkładów. W dalszej części projektu dokonaliśmy analizy łącznego rozkładu log-zwrotów, wyznaczając wektor średnich, kowariancję, współczynnik korelacji oraz macierze kowariancji i korelacji. Zweryfikowaliśmy dopasowanie rozkładu N(μ, Σ) do danych, przeprowadzając testy hipotezy i zgodności Kołmogorowa-Smirnowa. W końcowej części projektu przeprowadziliśmy regresję liniową dla log-zwrotów i zwykłych zwrotów, wyznaczając przedziały ufności dla wartości oczekiwanej. Podsumowując, projekt przedstawia szczegółową analizę kursów dwóch spółek, uwzględniając różne aspekty i techniki statystyczne. Obliczenia oraz wykresy zostały wykonane za pomocą R studio.
+
+\end{document}
+
